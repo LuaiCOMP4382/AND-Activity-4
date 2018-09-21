@@ -6,15 +6,15 @@ import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-@Entity(tableName = "course")
+// TODO (1): Define course as entity with table name "course"
 public class Course implements Parcelable {
 
-    @PrimaryKey(autoGenerate = true)
+    // TODO (2): Make id the PrimaryKey, and set autoGenerate to true
     private int id;
     private String code;
     private String description;
 
-    @Ignore
+    // TODO (3): Since we have two constructors, we need to ignore one. Room needs the one with id, so ignore this constructor
     public Course(String code, String description) {
         this.code = code;
         this.description = description;
@@ -57,15 +57,9 @@ public class Course implements Parcelable {
     }
 
     @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
     public void writeToParcel(Parcel parcel, int i) {
+        // TODO (4): To pass in classes in intents, we need to make a class implement Parcelable. Write code and description strings
         parcel.writeInt(id);
-        parcel.writeString(code);
-        parcel.writeString(description);
     }
 
     public static final Parcelable.Creator<Course> CREATOR = new Parcelable.Creator<Course>() {
@@ -77,5 +71,10 @@ public class Course implements Parcelable {
             return new Course[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
 }

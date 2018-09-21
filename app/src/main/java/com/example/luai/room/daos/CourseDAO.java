@@ -21,13 +21,15 @@ public interface CourseDAO {
     @Insert
     void insertCourse(Course course);
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
+    // TODO (6): Make the update's on conflict strategy to OnConflictStrategy.REPLACE
+    @Update
     void updateCourse(Course course);
 
     @Delete
     void deleteCourse(Course course);
 
-    @Query("SELECT * FROM course WHERE id = :id")
+    // TODO (7): Write SQL query to find a course by id using WHERE clause
+    @Query("???")
     LiveData<Course> findCourseById(int id);
 
 }

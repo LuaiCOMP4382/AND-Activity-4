@@ -49,11 +49,7 @@ public class MainActivity extends AppCompatActivity implements CourseAdapter.Cou
     @Override
     public void onCourseItemClick(Course course) {
 
-        Intent intent = new Intent(this, DetailsActivity.class);
-
-        intent.putExtra(INTENT_KEY_COURSE, course);
-
-        startActivity(intent);
+        // TODO (5): Create an intent to DetailsActivity, and then put extra the course with key INTENT_KEY_COURSE, then startActivity. Since course implements Parcleable, we can pass it in intents
 
     }
 

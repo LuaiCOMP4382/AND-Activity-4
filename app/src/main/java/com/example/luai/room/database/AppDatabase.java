@@ -21,10 +21,10 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context) {
         if (sInstance == null) {
             synchronized (LOCK) {
-                Log.d(LOG_TAG, "Creating new database instance");
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class, AppDatabase.DATABASE_NAME)
-                        //.allowMainThreadQueries()
+                        // TODO (8): IT'S DANGEROUS TO EXECUTE QUERIES ON MAIN THREAD. Remove allowMainThreadQueries
+                        .allowMainThreadQueries()
                         .build();
             }
         }
@@ -32,6 +32,7 @@ public abstract class AppDatabase extends RoomDatabase {
         return sInstance;
     }
 
+    // TODO (9): Define abstract method courseDao that returns CourseDAO, the Dao we created
     public abstract CourseDAO courseDao();
 
 }

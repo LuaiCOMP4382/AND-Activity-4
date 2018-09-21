@@ -11,7 +11,8 @@ public class CourseDetailsViewModel extends ViewModel {
     private LiveData<Course> course;
 
     public CourseDetailsViewModel(AppDatabase database, int courseId) {
-        course = database.courseDao().findCourseById(courseId);
+        // TODO (14): Find course by id from the database
+        course = ???;
     }
 
     public LiveData<Course> getCourse() {

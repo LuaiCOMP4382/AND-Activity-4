@@ -47,13 +47,13 @@ public class DetailsActivity extends AppCompatActivity {
 
                 course = (Course) i.getParcelableExtra(MainActivity.INTENT_KEY_COURSE);
 
+                // TODO (10): Update the text views to show course id, code and description
                 mTextViewId.setText(String.valueOf(course.getId()));
-                mTextViewCode.setText(String.valueOf(course.getCode()));
-                mTextViewDescription.setText(String.valueOf(course.getDescription()));
 
             }
 
-        mDb = AppDatabase.getInstance(getApplicationContext());
+        // TODO (11): Get database instance and pass in getApplicationContext
+        mDb = ???
 
         setupViewModel();
 
@@ -68,12 +68,12 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable Course course) {
 
+                // TODO (12): If the course we get is null, set mCourseExists to true and make mTextViewAlreadyAdded visible, else, do the opposite
+
                 if (course != null) {
-                    mCourseExists = true;
-                    mTextViewAlreadyAdded.setVisibility(View.VISIBLE);
+
                 } else {
-                    mCourseExists = false;
-                    mTextViewAlreadyAdded.setVisibility(View.INVISIBLE);
+
                 }
             }
         });
@@ -99,12 +99,12 @@ public class DetailsActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
+                        // TODO (13): If the course does not exist in database, insert it, else, delete it
+
                         if (!mCourseExists) {
-                            mDb.courseDao().insertCourse(course);
-                            //Toast.makeText(getApplicationContext(), "Added course", Toast.LENGTH_SHORT).show();
+                            mDb.courseDao().???
                         } else {
-                            mDb.courseDao().deleteCourse(course);
-                            //Toast.makeText(getApplicationContext(), "Removed course", Toast.LENGTH_SHORT).show();
+                            mDb.courseDao().???
                         }
 
                     }
